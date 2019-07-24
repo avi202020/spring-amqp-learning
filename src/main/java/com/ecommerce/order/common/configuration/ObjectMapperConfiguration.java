@@ -30,8 +30,8 @@ import static java.util.TimeZone.getTimeZone;
 public class ObjectMapperConfiguration {
 
     @Bean
-    public com.ecommerce.order.common.utils.DefaultObjectMapper objectMapper() {
-        com.ecommerce.order.common.utils.DefaultObjectMapper mapper = new DefaultObjectMapper();
+    public DefaultObjectMapper objectMapper() {
+        DefaultObjectMapper mapper = new DefaultObjectMapper();
         mapper.findAndRegisterModules()
                 .setTimeZone(getTimeZone(of("Asia/Shanghai")))
                 .setVisibility(ALL, NONE)

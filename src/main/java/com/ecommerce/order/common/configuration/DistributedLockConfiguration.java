@@ -19,7 +19,7 @@ public class DistributedLockConfiguration {
     }
 
     @Bean
-    public com.ecommerce.order.common.distributedlock.DistributedLockExecutor distributedLockExecutor(LockProvider lockProvider) {
+    public DistributedLockExecutor distributedLockExecutor(LockProvider lockProvider) {
         return new DistributedLockExecutor(lockProvider);
     }
 

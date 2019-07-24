@@ -22,7 +22,7 @@ import static org.springframework.http.HttpStatus.valueOf;
 public class GlobalExceptionHandler {
     private Logger logger = AutoNamingLoggerFactory.getLogger();
 
-    @ExceptionHandler(com.ecommerce.order.common.exception.AppException.class)
+    @ExceptionHandler(AppException.class)
     @ResponseBody
     public ResponseEntity<?> handleAppException(AppException ex, HttpServletRequest request) {
         logger.error("App error:", ex);
