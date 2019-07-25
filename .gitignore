@@ -13,3 +13,5 @@ build/**
 classes/
 .ideaDataSources/
 dataSources/
+tmp.json
+tmp.txt

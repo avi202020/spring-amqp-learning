@@ -21,7 +21,7 @@ repositories {
 }
 
 application {
-    mainClassName = "com.ecommerce.Application"
+    mainClassName = "com.ecommerce.order.Application"
     applicationDefaultJvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"]
 }
 

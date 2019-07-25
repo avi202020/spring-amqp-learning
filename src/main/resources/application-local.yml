@@ -15,7 +15,6 @@ spring:
     virtual-host: /
     username: rabbitmq-user
     password: rabbitmq-password
-    publisher-confirms: true
 
 ecommerce:
   order:
