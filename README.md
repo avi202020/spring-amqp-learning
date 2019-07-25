@@ -1,17 +1,5 @@
 # 项目简介
-Spring Boot 独立项目模板,包含以下设施：
-- 本地构建脚本`local-build.sh`
-- Gradle配置：checkstyle/dependency-check/docker/git-hooks/spotbugs/idea/jacoco
-- 用于本地测试的docker-compose设施
-- 单元测试，组件测试，API测试
-- 订单(Order)示例代码
-- MySQL数据库+JdbcTemplate
-- 基于JDBC的分布式锁
-- Swagger
-- Scheduling
-- Jackson2 ObjectMapper
-- 异常处理机制
-- Flyway迁移脚本
+Spring AMQP学习。
 
 # 技术选型
 Spring Boot、Gradle、MySQL、Junit 5、Rest Assured、Docker
