@@ -25,7 +25,7 @@ class OrderApiTest extends BaseApiTest {
     private OrderRepository repository;
 
     @Test
-    public void should_create_order() {
+    public void should_create_order() throws InterruptedException {
         String id = given()
                 .contentType("application/json")
                 .body(new CreateOrderCommand(newArrayList(new OrderItemCommand("12345", 2, BigDecimal.valueOf(20)))))
@@ -34,6 +34,7 @@ class OrderApiTest extends BaseApiTest {
                 .then().statusCode(201)
                 .extract().body().jsonPath().getString("id");
         Order order = repository.byId(OrderId.orderId(id));
+        Thread.sleep(2000);
         assertNotNull(order);
     }
 
