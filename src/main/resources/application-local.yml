@@ -15,6 +15,14 @@ spring:
     virtual-host: /
     username: rabbitmq-user
     password: rabbitmq-password
+    publisher-confirms: true
+    listener:
+      simple:
+        prefetch: 1
+        concurrency: 5
+        maxConcurrency: 20
+        retry:
+          enabled: true
 
 ecommerce:
   order:
