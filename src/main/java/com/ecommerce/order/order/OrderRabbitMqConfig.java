@@ -22,7 +22,7 @@ public class OrderRabbitMqConfig {
     public static final String ORDER_RECEIVE_QUEUE = "order-receive-q";
     public static final String ORDER_RECEIVE_DLX = "order-receive-dlx";
     public static final String ORDER_RECEIVE_DLQ = "order-receive-dlq";
-    public static final String ORDER_RECOVER_EXCHANGE = "order-receive-recover-x";
+    public static final String ORDER_RECEIVE_RECOVER_EXCHANGE = "order-receive-recover-x";
 
     @Bean
     public MessageConverter jsonMessageConverter(ObjectMapper objectMapper) {
@@ -62,7 +62,7 @@ public class OrderRabbitMqConfig {
         return BindingBuilder.bind(orderPublishDlq()).to(orderPublishDlx()).with("#");
     }
 
-    //接收方的所有消息都发送到该"接收方Queue"，即"接收方queue"可以绑定多个"发送方Exchange"
+    //接收方的所有消息都发送到该"接收方Queue"，即"接收方Queue"可以绑定多个"发送方Exchange"
     @Bean
     public Queue orderReceiveQueue() {
         ImmutableMap<String, Object> args = ImmutableMap.of(
@@ -77,7 +77,7 @@ public class OrderRabbitMqConfig {
         return new Queue(ORDER_RECEIVE_QUEUE, true, false, false, args);
     }
 
-    //"接收方queue"绑定到"发送方exchange"
+    //"接收方Queue"绑定到"发送方Exchange"
     @Bean
     public Binding orderReceiveBinding() {
         return BindingBuilder.bind(orderReceiveQueue()).to(orderPublishExchange()).with("order.#");
@@ -107,10 +107,10 @@ public class OrderRabbitMqConfig {
     //"接收方恢复Exchange"，用于手动将"接收方DLQ"中的消息发到该DLX进行重试
     @Bean
     public TopicExchange orderReceiveRecoverExchange() {
-        return new TopicExchange(ORDER_RECOVER_EXCHANGE, true, false, null);
+        return new TopicExchange(ORDER_RECEIVE_RECOVER_EXCHANGE, true, false, null);
     }
 
-    //所有"接收方Queue"都绑定到"接收方恢复Exchange"
+    //"接收方Queue"绑定到"接收方恢复Exchange"
     @Bean
     public Binding orderReceiveRecoverBinding() {
         return BindingBuilder.bind(orderReceiveQueue()).to(orderReceiveRecoverExchange()).with("#");

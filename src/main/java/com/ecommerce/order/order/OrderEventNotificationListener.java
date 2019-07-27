@@ -11,12 +11,15 @@ import static com.ecommerce.order.order.OrderRabbitMqConfig.ORDER_RECEIVE_QUEUE;
 
 @Component
 @RabbitListener(queues = {ORDER_RECEIVE_QUEUE})
-public class OrderEventListener {
+public class OrderEventNotificationListener {
     private Logger logger = AutoNamingLoggerFactory.getLogger();
 
     @RabbitHandler
     public void onOrderCreated(OrderCreatedEvent event) {
-        logger.info("Received OrderCreatedEvent:{}", event.getOrderId());
+        // send notification
+        //sendSmsNotification(event);
+
+        logger.info("Notification sent for OrderCreatedEvent:{}", event.getOrderId());
     }
 
 }
