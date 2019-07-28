@@ -18,6 +18,7 @@ spring:
     publisher-confirms: true
     listener:
       simple:
+        default-requeue-rejected: false
         prefetch: 1
         concurrency: 5
         maxConcurrency: 20
